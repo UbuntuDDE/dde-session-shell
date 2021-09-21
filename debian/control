@@ -2,52 +2,62 @@ Source: dde-session-shell
 Section: devel
 Priority: optional
 Maintainer: Deepin Sysdev <sysdev@deepin.com>
-Build-Depends: debhelper (>= 8.0.0), pkg-config,
+Build-Depends:
  cmake,
- qtbase5-dev,
- liblightdm-qt5-3-dev | liblightdm-qt-dev,
- libxcb-ewmh-dev,
- libqt5x11extras5-dev,
- libgsettings-qt-dev,
- libqt5svg5-dev,
- libglib2.0-dev,
- libdtkwidget5.5-dev | libdtkwidget-dev,
- libdtkcore-dev,
- qtdeclarative5-dev,
- qttools5-dev-tools,
- libpam0g-dev,libsystemd-dev,
- libdframeworkdbus-dev,
+ debhelper-compat (=13),
  deepin-gettext-tools,
- libxtst-dev,
+ libdframeworkdbus-dev,
+ libdtkcore-dev (>=5.5~),
+ libdtkcore5-bin,
+ libdtkwidget-dev,
+ libglib2.0-dev,
+ libgsettings-qt-dev,
+ libgtest-dev,
+ liblightdm-qt5-3-dev | liblightdm-qt-dev,
+ libpam0g-dev,
+ libqt5svg5-dev,
+ libqt5x11extras5-dev,
+ libssl-dev,
+ libsystemd-dev,
+ libx11-xcb-dev,
+ libxcb-ewmh-dev,
  libxcursor-dev,
  libxrandr-dev,
- libdtkcore5-bin,
- libgtest-dev,
- libx11-xcb-dev,
- libssl-dev
-Standards-Version: 3.9.4
+ libxtst-dev,
+ pkg-config,
+ qtbase5-dev,
+ qtdeclarative5-dev,
+ qttools5-dev-tools,
+Standards-Version: 4.5.1
 Homepage: http://www.deepin.org/
 
 Package: dde-session-shell
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${dist:Depends},
+Depends:
+ dbus-x11,
+ dde-daemon (>=5.13.12~),
  deepin-desktop-schemas (>=5.9.14),
  libdframeworkdbus2 (>=5.4.10),
- dde-daemon (>=5.13.12),
+ libssl-dev,
  startdde (>=5.8.9),
  x11-xserver-utils,
- dbus-x11,
- deepin-authenticate(>=1.2.27),
  xsettingsd,
- libssl-dev
-Provides: lightdm-greeter
-Recommends: onboard
-Conflicts: dde-workspace,
- deepin-notifications,
+ ${dist:Depends},
+ ${misc:Depends},
+ ${shlibs:Depends},
+Provides:
+ lightdm-greeter,
+Recommends:
+ onboard,
+Conflicts:
+ dde-preload,
  dde-session-ui (<< 5.0.0),
- dde-preload
-Replaces: deepin-notifications
-Breaks: dde-workspace
+ dde-workspace,
+ deepin-notifications,
+Replaces:
+ deepin-notifications,
+Breaks:
+ dde-workspace,
 Description: deepin desktop-environment - dde-session-shell module
  Deepin desktop environment 2015 - dde-session-shell module.
  lightdm-deepin-greeter - login，the entry to the desktop

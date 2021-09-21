@@ -11,21 +11,6 @@ SYSTYPE=$(shell cat /etc/deepin-version | grep Type= | awk -F'=' '{print $$2}')
 %:
 	dh $@ --parallel
 
-ifeq ($(DEB_BUILD_ARCH), mipsel)
-override_dh_auto_configure:
-	dh_auto_configure -- LOCK_NO_QUIT=YES DISABLE_DEMO_VIDEO=YES DISABLE_TEXT_SHADOW=YES DISABLE_ANIMATIONS=YES USE_CURSOR_LOADING_ANI=YES
-endif
-
-ifeq ($(DEB_BUILD_ARCH), mips64el)
-override_dh_auto_configure:
-	dh_auto_configure -- LOCK_NO_QUIT=YES DISABLE_DEMO_VIDEO=YES DISABLE_TEXT_SHADOW=YES DISABLE_ANIMATIONS=YES USE_CURSOR_LOADING_ANI=YES
-endif
-
-ifeq ($(DEB_BUILD_ARCH), sw_64)
-override_dh_auto_configure:
-	dh_auto_configure -- LOCK_NO_QUIT=YES DISABLE_DEMO_VIDEO=YES DISABLE_TEXT_SHADOW=YES DISABLE_ANIMATIONS=YES USE_CURSOR_LOADING_ANI=YES
-endif
-
 ifeq ($(SYSTYPE), Professional)
 ifeq ($(DEB_BUILD_ARCH), amd64)
 override_dh_gencontrol:
